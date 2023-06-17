@@ -26,7 +26,7 @@ mongoose.connect(
   }
 );
 
- //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
+ //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//
 //middleware
 app.use(express.json());
 app.use(cors(corsOptions));
