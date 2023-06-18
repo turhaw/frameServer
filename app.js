@@ -1,6 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const session = require('express-session');
 const blogRouter = require("./routes/BlogRoutes");
+const userRouter = require("./routes/UserRoutes");
 const app = express();
 const cors =require("cors");
 
@@ -30,8 +32,9 @@ mongoose.connect(
 //middleware
 app.use(express.json());
 app.use(cors(corsOptions));
+app.use(session({secret:"fingerpint"},resave=true,saveUninitialized=true));
 app.use("/api/blogs", blogRouter);
-
+app.use("/api/user", userRouter);
 
 
 app.listen(3001, () => {
